@@ -49,6 +49,7 @@ Game.Play.prototype = {
 	},
 
 	update: function() {
+		//THIS IS THE GAME LOOP WHICH MAKES SURE THE GAME RUNS
 		if (this.dead)
 			return;
 
@@ -100,6 +101,7 @@ Game.Play.prototype = {
 
 	draw_sentence: function() {
 		this.text = [];
+		//We go trough the levels here
 		this.s = sentences[this.level];
 
 		for (var i = 0; i < this.s.length; i++) 
@@ -110,7 +112,7 @@ Game.Play.prototype = {
 				game.add.tween(this.text[i]).delay(i*20).to({alpha:1}, 200).start();
 				this.group_text.add(this.text[i]);
 			}
-
+		//Increments level
 		this.level += 1;
 
 		if (this.level == 2)
@@ -129,7 +131,7 @@ Game.Play.prototype = {
     	exp.scale.setTo(0.3, 0.3);
 
     	const t = game.add.tween(exp.scale).to({x:1, y: 1}, 500).start();
-    	t.onComplete.add(this.annimation_ended, this);
+    	t.onComplete.add(this.animation_ended, this);
     	game.add.tween(exp).delay(1500).to({alpha:0}, 2000).start();
 
     	var grp = game.add.group();
@@ -139,7 +141,7 @@ Game.Play.prototype = {
 	},
 
 	shake_effect: function(g) {
-		var move = 15;
+		var move = 25;
 		var time = 50;
 
 		game.add.tween(g)
@@ -149,9 +151,8 @@ Game.Play.prototype = {
 			.start();	
 	},
 
-	annimation_ended: function() {
+	animation_ended: function() {
 		this.city.frame = 1
-		game.stage.backGroundColor = "#FF0000";
 
 		var dead = game.add.text(w/2, 100, "the city is gone. you saved " + this.score + " lives", { font: "18px Courier", fill: "#fff" });
 		dead.anchor.setTo(0.5, 0);
