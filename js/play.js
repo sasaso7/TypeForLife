@@ -152,7 +152,10 @@ Game.Play.prototype = {
 	},
 
 	animation_ended: function() {
-		this.city.frame = 1
+		game.stage.backgroundColor = "#FF0000";
+		this.city.frame = 1;
+		this.city.frame.backgroundColor = "#000000"
+
 
 		var dead = game.add.text(w/2, 100, "the city is gone. you saved " + this.score + " lives", { font: "18px Courier", fill: "#fff" });
 		dead.anchor.setTo(0.5, 0);
