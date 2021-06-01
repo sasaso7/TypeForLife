@@ -120,6 +120,7 @@ Game.Play.prototype = {
 	},
 
 	end: function() {
+		game.stage.backgroundColor = "#FF0000";
 		this.exp_s.play('', 0, 0.3, false);
 		this.dead = true;
 		this.bomb.kill();
@@ -152,9 +153,8 @@ Game.Play.prototype = {
 	},
 
 	animation_ended: function() {
-		game.stage.backgroundColor = "#FF0000";
+		
 		this.city.frame = 1;
-		this.city.frame.backgroundColor = "#000000"
 
 
 		var dead = game.add.text(w/2, 100, "the city is gone. you saved " + this.score + " lives", { font: "18px Courier", fill: "#fff" });
@@ -170,5 +170,6 @@ Game.Play.prototype = {
 
 	restart: function() {
 		this.game.state.start('Play');
+		game.stage.backgroundColor = '#D7A9E3FF';
 	}
 };
